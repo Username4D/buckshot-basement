@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const sens = -.0015
-const speed = -3
+const speed = -1.2
 
 var real_velocity = Vector3.ZERO
 
@@ -10,7 +10,7 @@ func _input(event: InputEvent) -> void:
 		self.rotate(Vector3(0,1,0), sens  * event.relative.x)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x + sens * event.relative.y, -2, 2)
 		print(event.relative.x)
-	
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -25,5 +25,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		real_velocity.x = move_toward(real_velocity.x, 0, 32 * delta)
 	
+	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+		real_velocity.y = 1.5
+	real_velocity.y -= 0.06
 	velocity  =real_velocity.rotated(Vector3(0,1,0), self.rotation.y)
 	self.move_and_slide()
