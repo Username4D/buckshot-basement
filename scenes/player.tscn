@@ -25,8 +25,19 @@ shape = SubResource("BoxShape3D_3vyb7")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68405235, 0)
 
+[node name="Node3D" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.39774758, 0.10511336, -0.002687844, -2.8524574e-10, -0.12682217, -0.19838504, -0.042387605, 0.9863402, -0.025221614, 0.23142368, -0.18405235, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.64, 2.9802322e-08, 0, -2.9802322e-08, 0.5000001, -0.26060283, -0.36915836, -0.08655977)
+mesh = SubResource("BoxMesh_u8vuu")
+skeleton = NodePath("../../..")
+
+[node name="aim" type="Marker3D" parent="Camera3D/Node3D"]
+transform = Transform3D(1, -5.9604645e-08, 1.8626451e-09, 0, 1.0000005, 7.450581e-09, 0, -1.1920929e-07, 1.0000005, -0.22937626, -0.7970424, -0.123759985)
+
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(576, 288)
+position = Vector2(288, 162)
 rotation = 0.7853982
-scale = Vector2(32, 32)
+scale = Vector2(31.999998, 31.999998)
 mesh = SubResource("QuadMesh_3vyb7")
