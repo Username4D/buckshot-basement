@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://iqrxsunk3xb6"]
+[gd_scene load_steps=10 format=3 uid="uid://iqrxsunk3xb6"]
 
 [ext_resource type="PackedScene" uid="uid://cllcsld7c8xwp" path="res://scenes/player.tscn" id="1_ubp1v"]
-[ext_resource type="Texture2D" uid="uid://dr2pdlv4ecbhb" path="res://icon.svg" id="2_c4wp1"]
+[ext_resource type="Texture2D" uid="uid://bx7r5kuos8o6b" path="res://assets/wall_texture.png" id="2_fpimf"]
+[ext_resource type="PackedScene" uid="uid://seqfemjwsmgv" path="res://scenes/dungeon_tile.tscn" id="3_fpimf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4wp1"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -22,8 +23,10 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_fpimf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wj4k"]
-albedo_texture = ExtResource("2_c4wp1")
-uv1_scale = Vector3(128.31, 128.31, 128.31)
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_fpimf")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(416.125, 281.494, 293.578)
 texture_filter = 2
 stencil_flags = 2
 
@@ -35,8 +38,8 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [node name="player" parent="." instance=ExtResource("1_ubp1v")]
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-light_color = Color(1, 0.6117647, 0.34117648, 1)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 9.037109, 0)
+light_color = Color(0.4936359, 0.23807344, 0, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
@@ -46,11 +49,15 @@ environment = SubResource("Environment_fpimf")
 transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
 mesh = SubResource("BoxMesh_fpimf")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0wj4k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_c4wp1")
+
+[node name="dungeon tile" parent="." instance=ExtResource("3_fpimf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

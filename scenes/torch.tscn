@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0vm0pdurpp8v"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsf3068o3geht" path="res://assets/torch.obj" id="1_my26j"]
+[ext_resource type="Texture2D" uid="uid://cgqujbb4o5tgc" path="res://assets/dirty_texture.png" id="2_o2tjn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7a8f"]
+albedo_texture = ExtResource("2_o2tjn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flbf8"]
+albedo_color = Color(1, 0.6117647, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.54901963, 0, 1)
+emission_energy_multiplier = 18.3
+
+[node name="torch" type="MeshInstance3D"]
+transform = Transform3D(0.30947858, -1.1325121e-08, 0.2534226, -0.13663727, 0.33687934, 0.16686086, -0.21343209, -0.21566707, 0.26064238, 0, 0, 0)
+mesh = ExtResource("1_my26j")
+skeleton = NodePath("../brick_3")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7a8f")
+
+[node name="torch2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.75000006, 3.7252903e-09, -2.9802322e-08, 2.9802322e-08, 0.19999999, 2.9802322e-08, 5.9604645e-08, -2.2351742e-08, 0.75, -0.006419122, 0.5829942, 0.007839009)
+material_override = SubResource("StandardMaterial3D_flbf8")
+mesh = ExtResource("1_my26j")
+skeleton = NodePath("../../brick_3")
