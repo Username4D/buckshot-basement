@@ -18566,4 +18566,3 @@ shape = SubResource("CapsuleShape3D_3fsw7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_postprocessing = 1
-avoidance_enabled = true
