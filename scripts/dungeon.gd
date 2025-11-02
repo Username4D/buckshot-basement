@@ -8,9 +8,12 @@ func check_wave():
 	for  i in $enemies.get_children():
 		if i.health <= 0:
 			alive -= 1
+	ui_handler.enemys = alive
 	print(alive)
 	if alive == 0:
 		wave += 1
+		ui_handler.wave = wave
+		ui_handler.enemys = pow(2, wave)
 		for i in range(0, pow(2, wave)):
 			var nzombie = zombie.instantiate()
 			nzombie.scale = Vector3(0.02,0.02,0.02)

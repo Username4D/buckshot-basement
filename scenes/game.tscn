@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnsal840vw4oq"]
+
+[ext_resource type="PackedScene" uid="uid://bwh55bnpaiyvs" path="res://scenes/viewport.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bljed7053bd0a" path="res://scenes/game.gd" id="1_yqjtg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqjtg"]
+bg_color = Color(1, 1, 1, 0.05882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+font_size = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_iywne"]
+font_size = 13
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_yqjtg")
+
+[node name="SubViewportContainer" parent="." instance=ExtResource("1_uwrxv")]
+
+[node name="enemys left" type="ProgressBar" parent="."]
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 832.0
+offset_bottom = 96.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yqjtg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lnu2h")
+value = 32.98
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 128.0
+text = "Enemys left: 7"
+label_settings = SubResource("LabelSettings_lbhrr")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 704.0
+offset_top = 96.0
+offset_right = 832.0
+offset_bottom = 128.0
+text = "Wave: 2"
+label_settings = SubResource("LabelSettings_iywne")
+horizontal_alignment = 2

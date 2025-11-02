@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Horror_game"
-run/main_scene="uid://bwh55bnpaiyvs"
+run/main_scene="uid://cnsal840vw4oq"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ui_handler="*res://scripts/ui_handler.gd"
 
 [editor_plugins]
 
@@ -24,6 +28,11 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 player=""
 zombie=""
 wall=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
 
 [input]
 
