@@ -32,7 +32,7 @@ func attack():
 	await get_tree().create_timer(0.4).timeout
 	for i in $attack_part.get_overlapping_bodies():
 		if i.is_in_group("player"):
-			print(i)
+			i.health -= 1
 	await $AnimationPlayer.animation_finished
 	state = "idle"
 

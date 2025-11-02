@@ -22,6 +22,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
+	ui_handler.hp = health
 	if Input.get_axis("ui_down","ui_up"):
 		real_velocity.z = move_toward(real_velocity.z, speed* Input.get_axis("ui_down","ui_up"), 16 * delta )
 	else:
