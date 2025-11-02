@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const sens = -.0015
-const speed = -1.2
+const speed = -1.4
 
 var real_velocity = Vector3.ZERO
 var Camera_accel = 0

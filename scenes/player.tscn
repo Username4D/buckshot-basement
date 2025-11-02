@@ -11,7 +11,7 @@ size = Vector3(0.2, 1, 0.2)
 [sub_resource type="QuadMesh" id="QuadMesh_3vyb7"]
 size = Vector2(0.25, 0.25)
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
