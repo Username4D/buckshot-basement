@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var state = "idle"
-@export var health = 10
+@export var health = 5
 func _physics_process(delta: float) -> void:
 	if state == "idle":
 		if self.position.distance_to(self.get_parent().get_parent().get_node("player").position) < 40.0:

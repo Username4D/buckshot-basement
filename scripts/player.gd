@@ -3,6 +3,7 @@ extends CharacterBody3D
 const sens = -.0015
 const speed = -1.4
 
+var on_cooldown = false
 var real_velocity = Vector3.ZERO
 var Camera_accel = 0
 
@@ -13,7 +14,7 @@ func _input(event: InputEvent) -> void:
 		self.rotate(Vector3(0,1,0), sens  * event.relative.x)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x + sens * event.relative.y, -1.5, 2)
 
-	if Input.is_action_just_pressed("ui_shoot"):
+	if Input.is_action_just_pressed("ui_shoot") and not on_cooldown:
 		shoot()
 
 func _ready() -> void:
@@ -39,9 +40,12 @@ func _physics_process(delta: float) -> void:
 		Camera_accel -= 3 * delta
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x + 3 * delta, -1.5, 2)
 func shoot():
+	on_cooldown = true
 	Camera_accel = .2
 	var new_bullet = bullet.instantiate()
 	new_bullet.position = $Camera3D/Node3D/aim.global_position
 	new_bullet.rotation = $Camera3D.global_rotation
 	print(new_bullet.rotation)
 	self.get_parent().add_child(new_bullet)
+	await get_tree().create_timer(0.5).timeout
+	on_cooldown = false
