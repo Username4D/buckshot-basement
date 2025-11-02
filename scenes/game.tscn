@@ -1,19 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnsal840vw4oq"]
+[gd_scene load_steps=8 format=3 uid="uid://cnsal840vw4oq"]
 
 [ext_resource type="PackedScene" uid="uid://bwh55bnpaiyvs" path="res://scenes/viewport.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bljed7053bd0a" path="res://scenes/game.gd" id="1_yqjtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqjtg"]
-bg_color = Color(1, 1, 1, 0.05882353)
+bg_color = Color(0.76, 0.46284002, 0.37240002, 0.15294118)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.7637573, 0.46302795, 0.37137133, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
 font_size = 13
+font_color = Color(0.7637573, 0.46302795, 0.37137133, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_iywne"]
 font_size = 13
+font_color = Color(0.7637573, 0.46302795, 0.37137133, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yqjtg"]
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_yqjtg")
@@ -21,28 +25,57 @@ script = ExtResource("1_yqjtg")
 [node name="SubViewportContainer" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="enemys left" type="ProgressBar" parent="."]
-offset_left = 320.0
-offset_top = 64.0
-offset_right = 832.0
-offset_bottom = 96.0
+offset_left = 608.0
+offset_top = 32.0
+offset_right = 1120.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yqjtg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lnu2h")
+value = 32.98
+show_percentage = false
+
+[node name="health" type="ProgressBar" parent="."]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 544.0
+offset_bottom = 64.0
+scale = Vector2(1, 0.5)
 theme_override_styles/background = SubResource("StyleBoxFlat_yqjtg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lnu2h")
 value = 32.98
 show_percentage = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 96.0
-offset_right = 448.0
-offset_bottom = 128.0
+offset_left = 608.0
+offset_top = 64.0
+offset_right = 736.0
+offset_bottom = 96.0
 text = "Enemys left: 7"
 label_settings = SubResource("LabelSettings_lbhrr")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 704.0
-offset_top = 96.0
-offset_right = 832.0
-offset_bottom = 128.0
+offset_left = 992.0
+offset_top = 64.0
+offset_right = 1120.0
+offset_bottom = 96.0
 text = "Wave: 2"
 label_settings = SubResource("LabelSettings_iywne")
 horizontal_alignment = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+self_modulate = Color(0.7637573, 0.46302795, 0.37137133, 1)
+position = Vector2(36, 36)
+scale = Vector2(7.9744167, 8)
+mesh = SubResource("SphereMesh_yqjtg")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+self_modulate = Color(0.7637573, 0.46302795, 0.37137133, 1)
+position = Vector2(44, 36)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_yqjtg")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+self_modulate = Color(0.7637573, 0.46302795, 0.37137133, 1)
+position = Vector2(36, 36)
+scale = Vector2(0.125, 0.125)
+polygon = PackedVector2Array(-32, 0, -32, 32, 32, 96, 96, 32, 96, 0)

@@ -8,6 +8,7 @@ var real_velocity = Vector3.ZERO
 var Camera_accel = 0
 
 var bullet = preload("res://scenes/bullet.tscn")
+var health = 10
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -47,5 +48,5 @@ func shoot():
 	new_bullet.rotation = $Camera3D.global_rotation
 	print(new_bullet.rotation)
 	self.get_parent().add_child(new_bullet)
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.25).timeout
 	on_cooldown = false

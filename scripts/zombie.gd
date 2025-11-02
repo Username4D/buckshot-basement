@@ -37,7 +37,8 @@ func attack():
 	state = "idle"
 
 func die():
-	$CollisionShape3D.queue_free()
+	if $CollisionShape3D:
+		$CollisionShape3D.queue_free()
 	$AnimationPlayer.play("death")
 	await $AnimationPlayer.animation_finished
 	self.get_parent().get_parent().check_wave()
