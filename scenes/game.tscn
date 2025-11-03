@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnsal840vw4oq"]
+[gd_scene load_steps=11 format=3 uid="uid://cnsal840vw4oq"]
 
 [ext_resource type="PackedScene" uid="uid://bwh55bnpaiyvs" path="res://scenes/viewport.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bljed7053bd0a" path="res://scenes/game.gd" id="1_yqjtg"]
@@ -18,6 +18,17 @@ font_size = 13
 font_color = Color(0.7637573, 0.46302795, 0.37137133, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_yqjtg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbhrr"]
+bg_color = Color(0.6, 0, 0, 0.2509804)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
+font_size = 103
+font_color = Color(0.67384195, 0.08788168, 2.8878452e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lnu2h"]
+font_size = 33
+font_color = Color(0.67384195, 0.08788168, 2.8878452e-07, 1)
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_yqjtg")
@@ -80,3 +91,47 @@ self_modulate = Color(0.7637573, 0.46302795, 0.37137133, 1)
 position = Vector2(36, 36)
 scale = Vector2(0.125, 0.125)
 polygon = PackedVector2Array(-32, 0, -32, 32, 32, 96, 96, 32, 96, 0)
+
+[node name="death_screen" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 672.0
+color = Color(0, 0, 0, 1)
+
+[node name="retry" type="Button" parent="death_screen"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 512.0
+offset_right = 768.0
+offset_bottom = 576.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lbhrr")
+text = "Retry"
+
+[node name="Label" type="Label" parent="death_screen"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 384.0
+text = "YOU DIED!"
+label_settings = SubResource("LabelSettings_yqjtg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="wave" type="Label" parent="death_screen"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 1152.0
+offset_bottom = 384.0
+text = "Wave: 2"
+label_settings = SubResource("LabelSettings_lnu2h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="death_transition" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="death_screen/retry" to="." method="_on_retry_pressed"]
