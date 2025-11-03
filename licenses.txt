@@ -1,3 +1,6 @@
 Zombie Model:
 
 "HL1 Styled HL2 Zombie Rig" (https://skfb.ly/oZQsx) by NO DONT EAT ME CASEOH (Ferris wheel) is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Godot:
+https://godotengine.org/license/
